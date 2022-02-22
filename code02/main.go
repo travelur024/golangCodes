@@ -37,4 +37,6 @@ func main() {
 	const altura01 = 3
 	fmt.Println(base01, altura01)
 	fmt.Println("Area:", (areaRectangulo(base01, altura01)))
+
+	// modification
 }
