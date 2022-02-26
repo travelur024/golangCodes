@@ -18,6 +18,22 @@ type task struct {
 	completado  bool
 }
 
+func (t *taskList) imprimirLista() {
+	for _, elem := range t.tasks {
+		fmt.Println("Nombre:", elem.nombre)
+		fmt.Println("Descripcion:", elem.descripcion)
+	}
+}
+
+func (t *taskList) imprimirListaCompletados() {
+
+	for _, elem := range t.tasks {
+		if elem.completado == true {
+			fmt.Println("Nombre:", elem.nombre)
+			fmt.Println("Descripcion:", elem.descripcion)
+		}
+	}
+}
 func (t *task) marcarCompleta() {
 	t.completado = true
 }
@@ -57,11 +73,9 @@ func main() {
 		},
 	}
 	lista.agregarAlista(t3)
-	for i := 0; i < len(lista.tasks); i++ {
-		fmt.Println("Index", i, "nombre", lista.tasks[i].nombre)
-	}
-	for index, tarea := range lista.tasks {
-		fmt.Println("Index", index, "nombre", tarea.nombre)
-	}
+	lista.imprimirLista()
+	lista.tasks[0].marcarCompleta()
+	fmt.Println("Tares completadas")
+	lista.imprimirListaCompletados()
 
 }
