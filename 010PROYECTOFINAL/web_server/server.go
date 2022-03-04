@@ -27,6 +27,25 @@ func NewServer(port string) *Server {
 	}
 }
 
+func (s *Server) Handle(path string, handler http.HandlerFunc) {
+	s.router.rules[path] = handler
+}
+
+// func AddMidleware(f http.HandlerFunc, middlewares ...Middleware) http.HandlerFunc {
+// 	for _, m := range middlewares {
+// 		f = m(f)
+// 	}
+
+// 	return f
+// }
+
+func (s *Server) AddMidleware(f http.HandlerFunc, middlewares ...Middleware) http.HandlerFunc {
+	for _, m := range middlewares {
+		f = m(f)
+	}
+	return f
+}
+
 //Neseria para que escuche peticiones...
 //Funcion tipo receiver, del struct Server, devuelve un
 //error en caso de que haya problemas al conectar

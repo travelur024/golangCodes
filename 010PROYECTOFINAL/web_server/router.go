@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -23,6 +22,11 @@ func NewRouter() *Router {
 	}
 }
 
+func (r *Router) FindHandler(path string) (http.HandlerFunc, bool) {
+	handler, exist := r.rules[path]
+	return handler, exist
+}
+
 //Metodo ServeHTTP de router para poder implementar en el
 //handler el atributo s.router en server.go parametros:
 //el primero es el escritor, el segundo es el request en donde
@@ -32,5 +36,10 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, request *http.Request) {
 	//impresion de mensaje respuesta que el servidor da a la ruta
 	//Fprintf es un escritor, que recive w que es el escritor
 	//asignado, y el mensaje que queremos mostrar
-	fmt.Fprintf(w, "Hello wordl! hdtprtm!")
+	handler, exist := r.FindHandler(request.URL.Path)
+	if !exist {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+	handler(w, request)
 }
