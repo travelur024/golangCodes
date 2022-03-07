@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"time"
 )
 
 func CheckAuth() Middleware {
@@ -15,6 +17,19 @@ func CheckAuth() Middleware {
 			} else {
 				return
 			}
+		}
+	}
+}
+
+//Logger
+func Logging() Middleware {
+	return func(f http.HandlerFunc) http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			start := time.Now()
+			defer func() {
+				log.Println(time.Since(start), r.URL.Path)
+			}()
+			f(w, r)
 		}
 	}
 }
