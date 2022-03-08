@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	pk "github.com/travelur024/accesos/mypackage"
+	pk "github.com/travelur024/003BasicCourse/accesos/mypackage"
 )
 
 func main() {

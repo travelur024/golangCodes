@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/travelur024/reto/rt"
+	"github.com/travelur024/003BasicCourse/reto/rt"
 )
 
 func main() {
