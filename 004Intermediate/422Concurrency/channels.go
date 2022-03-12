@@ -1,10 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	c := make(chan int)
-	c <- 1
+	fmt.Println("Start")
+	go func() {
+		c <- 1
+		c <- 2
+		c <- 3
 
-	fmt.Println(<-c)
+	}()
+	go func() {
+		fmt.Println(<-c)
+		time.Sleep(1 * time.Second)
+		fmt.Println(<-c)
+		time.Sleep(1 * time.Second)
+		fmt.Println(<-c)
+		fmt.Println("End")
+	}()
+	time.Sleep(5 * time.Second)
+
 }
