@@ -1,0 +1,8 @@
+mode: set
+github.com/travelur024/mock-testing/main.go:25.55,29.2 2 0
+github.com/travelur024/mock-testing/main.go:30.54,34.2 2 0
+github.com/travelur024/mock-testing/main.go:36.76,39.16 3 1
+github.com/travelur024/mock-testing/main.go:42.2,44.16 3 1
+github.com/travelur024/mock-testing/main.go:47.2,48.24 2 1
+github.com/travelur024/mock-testing/main.go:39.16,41.3 1 0
+github.com/travelur024/mock-testing/main.go:44.16,46.3 1 0
