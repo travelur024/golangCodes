@@ -7,7 +7,7 @@ import (
 
 func main() {
 	go spinner(100 * time.Millisecond)
-	const n = 7
+	const n = 39
 	fibN := fib(n) // slow
 	fmt.Printf("\rFibonacci(%d) = %d\n", n, fibN)
 }

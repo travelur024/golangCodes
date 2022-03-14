@@ -22,6 +22,18 @@ func main() {
 		fmt.Println(<-c)
 		fmt.Println("End")
 	}()
+	go func() {
+
+		a := []string{"/", "|", "-", "\""}
+		for {
+			for _, elem := range a {
+				fmt.Printf("\r%v", elem)
+				time.Sleep(100 * time.Millisecond)
+			}
+		}
+
+	}()
+
 	time.Sleep(5 * time.Second)
 
 }
