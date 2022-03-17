@@ -101,7 +101,7 @@ func (d *Dispatcher) Run() {
 		worker := NewWorker(i, d.WorkerPool)
 		worker.Start()
 	}
-	go d.Dispatch()
+	go d.Dispatch() //manda los jobs al workerPool chan chan
 
 }
 
