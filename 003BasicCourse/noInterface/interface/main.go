@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 //Animales que indican como se estan moviendo - Ejemplo interfaces
 //Aplicando la interface con meotodos independiente...
 
@@ -16,18 +18,19 @@ type pajaro struct {
 }
 
 //Metodos de animales- Con la accion que necesitamos
-func (p *perro) Accion() string {
-	return "Soy un perro y ladro"
+func (perro) Accion() string {
+	return "Hola soy un perro Gua! Gua!"
 }
-func (p *pez) Accion() string {
-	return "Soy un pez y nado"
+
+func (pez) Accion() string {
+	return "Hola soy un pez Agua! Agua!"
 }
-func (p *pajaro) Accion() string {
-	return "Soy un pajaro y vuelo"
+func (pajaro) Accion() string {
+	return "Hola soy un pajaro Pico! Pico!"
 }
 
 func moverAnimal(a Animal) {
-	println(a.Accion())
+	fmt.Println(a.Accion())
 }
 
 func main() {
