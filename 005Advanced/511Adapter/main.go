@@ -25,22 +25,24 @@ func (BankPayment) Pay(bankAccount int) {
 	fmt.Printf("Paying using Bankaccount %d\n", bankAccount)
 }
 
-type BankPaymentAdapter struct {
+//Creating adapter
+type BankPaymetAdater struct {
+	bankAccount int
 	BankPayment *BankPayment
-	BankAccount int
 }
 
-func (bpa *BankPaymentAdapter) Pay() {
-	bpa.BankPayment.Pay(bpa.BankAccount)
+//Using the same interface
+func (bpa BankPaymetAdater) Pay() {
+	bpa.BankPayment.Pay(bpa.bankAccount)
 }
 
 //Main
 func main() {
 	cash := &CashPayment{}
 	ProcessPayment(cash)
-	cash.Pay()
-	bpa := &BankPaymentAdapter{
-		BankAccount: 5,
+	// cash.Pay()
+	bpa := &BankPaymetAdater{
+		bankAccount: 5,
 		BankPayment: &BankPayment{},
 	}
 	ProcessPayment(bpa)
